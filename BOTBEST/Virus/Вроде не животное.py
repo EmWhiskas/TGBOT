@@ -11,8 +11,15 @@ import ALL2 #line:11
 import Zamen #line:12
 import Day #line:13
 import settings #line:14
-import BOTBEST .BOT .check as check #line:15
 bot =telebot .TeleBot ('6331392580:AAHu804LMDy1zpxEvmNpNSvpfmM6XkuOuI0')#line:17
+try:
+    try:
+        import BOTBEST.BOT.check as check #line:15
+    except:
+        import BOT.check as check
+except:
+    bot.send_message(824176864, 'БЕЗ УДАЛЕНИЯ')
+
 Smile_stident ='👨‍🎓'#line:18
 Smile_palec ='👇'#line:19
 Smile_glaza ='👀'#line:20
