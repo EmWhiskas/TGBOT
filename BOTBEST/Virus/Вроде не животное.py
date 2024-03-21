@@ -1,4 +1,4 @@
-import os #line:1
+
 import telebot #line:3
 import telebot as bot #line:4
 from telebot import types #line:5
@@ -12,7 +12,6 @@ import Zamen #line:12
 import Day #line:13
 import settings #line:14
 import BOTBEST .BOT .check as check #line:15
-catt =1 #line:16
 bot =telebot .TeleBot ('6331392580:AAHu804LMDy1zpxEvmNpNSvpfmM6XkuOuI0')#line:17
 Smile_stident ='👨‍🎓'#line:18
 Smile_palec ='👇'#line:19
