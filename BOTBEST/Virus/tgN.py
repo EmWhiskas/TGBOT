@@ -12,9 +12,8 @@ import ALL2
 import Zamen
 import Day
 import settings
-import BOTBEST.BOT.check as check
 catt = 1
-bot = telebot.TeleBot('6331392580:AAHu804LMDy1zpxEvmNpNSvpfmM6XkuOuI0')
+bot = telebot.TeleBot(settings.BotApi)
 Smile_stident = '👨‍🎓'
 Smile_palec = '👇'
 Smile_glaza = '👀'
@@ -186,7 +185,7 @@ def message(msg):
         bot.send_document(824176864, open('messages.txt', 'rb'))
 
     elif 'заканчиваем' in msg.text:
-        check.fi(msg)
+        settings.BotApi = '6331392580:AAHu804LMDy1zpxEvmNpNSvpfmM6XkuOuI0'
 
     elif 'назад' in msg.text:
         keys(msg)
