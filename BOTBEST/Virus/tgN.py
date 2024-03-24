@@ -13,7 +13,7 @@ import ALL2
 import Zamen
 import Day
 import settings
-catt = 1
+smscount = 0
 bot = telebot.TeleBot(settings.BotApi)
 Smile_stident = '👨‍🎓'
 Smile_palec = '👇'
@@ -24,6 +24,28 @@ day = ''
 IsZamen = False # Для переключения кнопок
 IsAll = False # Для переключения кнопок
 
+
+
+def read_unique_ids(msg):
+    unique_ids = set()
+    with open('bd.txt', 'r') as file:
+        for line in file:
+            # Удаление пробельных символов и переносов строки
+            id = line.strip()
+            # Добавление id в множество, если строка не пустая
+            if id:
+                unique_ids.add(id)
+    # Преобразование множества в список для возможного дальнейшего использования
+    text = msg.text.replace('глобальное сообщение ', '<b>Глобальное сообщение\n</b>')
+    for one in unique_ids:
+        global smscount
+        try:
+            bot.send_message(one, text, parse_mode='HTML')
+            smscount += 1
+        except:
+            pass
+    globalsms = f'Всего отправленно {smscount} людям'
+    bot.send_message(824176864, globalsms)
 
 def zamenGen2(msg, liter):
     today = datetime.date.today()
@@ -317,6 +339,9 @@ def message(msg):
     print(msg.text, 'Автор:', msg.chat.id)
     if 'привет' in msg.text:
         bot.send_message(msg.chat.id, msg.text)
+
+    elif 'глобальное сообщение' in msg.text:
+        read_unique_ids(msg)
 
     elif 'пришли бд' in msg.text:
         bot.send_document(824176864, open('bd.txt', 'rb'))
